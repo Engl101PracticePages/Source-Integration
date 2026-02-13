@@ -3,276 +3,427 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Source Integration + MLA In-Text Citations Practice</title>
+  <title>MLA Citation Practice (Calm + Colorful)</title>
   <style>
     :root{
-      --bg:#0b0f14; --panel:#111826; --panel2:#0f172a; --text:#e6edf7; --muted:#a9b7cf;
-      --accent:#7dd3fc; --good:#86efac; --warn:#fde68a; --bad:#fca5a5; --line:#22304a;
-      --btn:#1f2a44;
+      --bg: #f6fbff;
+      --bg2:#f7f3ff;
+
+      --card: #ffffff;
+
+      --text: #1f2a44;
+      --muted:#51607a;
+
+      --line:#d7e5f5;
+
+      --blue:#3b82f6;
+      --mint:#34d399;
+      --sun:#fbbf24;
+      --pink:#fb7185;
+      --purple:#a78bfa;
+
+      --btn:#2563eb;
+      --btn2:#0ea5e9;
+
+      --good:#16a34a;
+      --warn:#d97706;
+      --bad:#dc2626;
+
+      --shadow: 0 10px 22px rgba(31,42,68,.10);
+      --radius: 18px;
     }
+
     *{box-sizing:border-box}
+
     body{
-      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:linear-gradient(180deg,var(--bg),#070a0f);
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
+      background:
+        radial-gradient(900px 500px at 10% 0%, rgba(59,130,246,.12), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(167,139,250,.14), transparent 60%),
+        radial-gradient(900px 500px at 50% 100%, rgba(52,211,153,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
     }
-    header{
-      padding:28px 16px 18px;
-      border-bottom:1px solid var(--line);
-      background:rgba(17,24,38,.6);
+
+    header{ padding: 26px 16px 16px; }
+    .wrap{max-width:1100px; margin:0 auto; padding:0 16px}
+
+    .topbar{
+      background: rgba(255,255,255,.75);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px 18px 14px;
+      box-shadow: var(--shadow);
       backdrop-filter: blur(8px);
     }
-    .wrap{max-width:1100px; margin:0 auto; padding:0 16px}
-    h1{margin:0 0 6px; font-size:22px}
-    p{margin:10px 0; color:var(--muted); line-height:1.45}
-    a{color:var(--accent); text-decoration:none}
+
+    h1{ margin:0 0 8px; font-size: 24px; letter-spacing: .2px; }
+    p{margin:10px 0; line-height:1.5; color:var(--muted)}
+    a{color:var(--blue); text-decoration:none}
     a:hover{text-decoration:underline}
+
     .grid{
       display:grid;
       grid-template-columns: 1fr;
-      gap:14px;
-      padding:18px 0 36px;
+      gap: 14px;
+      padding: 6px 0 40px;
     }
     @media (min-width: 980px){
       .grid{grid-template-columns: 1fr 1fr;}
       .span2{grid-column:1 / -1;}
     }
+
     .card{
       border:1px solid var(--line);
-      background:rgba(17,24,38,.72);
-      border-radius:14px;
-      padding:14px 14px 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,.25);
+      background: rgba(255,255,255,.78);
+      border-radius: var(--radius);
+      padding: 16px 16px 14px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
     }
-    .card h2{
-      margin:0 0 8px;
-      font-size:16px;
+    .card h2{ margin:0 0 8px; font-size: 17px; }
+
+    .tagline{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin: 10px 0 0;
     }
-    .subtle{font-size:13px; color:var(--muted)}
-    .pillrow{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0}
-    .pill{
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       border:1px solid var(--line);
-      background:rgba(15,23,42,.7);
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:12px;
-      color:var(--muted);
+      background: rgba(255,255,255,.9);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
     }
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius: 999px;
+      background: var(--sun);
+    }
+    .dot.blue{background: var(--blue)}
+    .dot.mint{background: var(--mint)}
+    .dot.pink{background: var(--pink)}
+    .dot.purple{background: var(--purple)}
+
+    .bigstep{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      margin: 8px 0 12px;
+    }
+    .stepnum{
+      flex:0 0 auto;
+      width:34px;
+      height:34px;
+      border-radius: 12px;
+      display:grid;
+      place-items:center;
+      background: rgba(59,130,246,.12);
+      border: 1px solid rgba(59,130,246,.25);
+      color: var(--blue);
+      font-weight: 800;
+    }
+    .subtle{font-size: 13px; color: var(--muted)}
+
     details{
       border:1px solid var(--line);
-      border-radius:12px;
-      padding:10px 12px;
-      background:rgba(15,23,42,.55);
-      margin-top:10px;
+      border-radius: 16px;
+      padding: 10px 12px;
+      background: rgba(59,130,246,.06);
+      margin-top: 10px;
     }
-    summary{cursor:pointer; color:var(--text); font-weight:600}
-    .k{
-      display:inline-block;
-      font-size:12px;
-      padding:2px 8px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:rgba(17,24,38,.55);
-      margin-right:6px;
-      color:var(--muted);
+    summary{ cursor:pointer; font-weight: 800; color: var(--text); }
+
+    label{
+      display:block;
+      font-size: 13px;
+      margin: 10px 0 6px;
+      color: var(--muted);
+      font-weight: 650;
     }
-    label{display:block; font-size:13px; margin:10px 0 6px; color:var(--muted)}
+
     textarea, input, select{
       width:100%;
       border:1px solid var(--line);
-      border-radius:12px;
-      background:rgba(15,23,42,.7);
-      color:var(--text);
-      padding:10px 10px;
-      outline:none;
-      font-size:14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.92);
+      color: var(--text);
+      padding: 10px 10px;
+      outline: none;
+      font-size: 14px;
+      box-shadow: 0 2px 0 rgba(31,42,68,.03);
     }
     textarea{min-height:110px; resize:vertical}
+
     .row{display:grid; grid-template-columns:1fr; gap:10px}
     @media (min-width: 980px){ .row{grid-template-columns:1fr 1fr;} }
+
     .btnrow{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+
     button{
-      appearance:none; border:1px solid var(--line);
-      background:rgba(31,42,68,.75);
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:12px;
+      appearance:none;
+      border:0;
+      border-radius: 14px;
       cursor:pointer;
-      font-weight:600;
-      transition: transform .06s ease, background .2s ease;
+      font-weight: 800;
+      padding: 10px 12px;
+      color: white;
+      background: linear-gradient(135deg, var(--btn), var(--btn2));
+      box-shadow: 0 10px 18px rgba(37,99,235,.22);
+      transition: transform .08s ease, filter .2s ease;
     }
-    button:hover{background:rgba(31,42,68,.95)}
+    button:hover{filter: brightness(1.05)}
     button:active{transform: translateY(1px)}
+    button.secondary{
+      background: linear-gradient(135deg, rgba(31,42,68,.75), rgba(81,96,122,.85));
+      box-shadow: 0 10px 18px rgba(31,42,68,.16);
+    }
+
     .status{
-      display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
       margin-top:10px;
-      font-size:13px;
-      color:var(--muted);
+      font-size: 13px;
+      color: var(--muted);
     }
     .badge{
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(15,23,42,.6);
-      display:inline-flex; gap:8px; align-items:center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.9);
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
     }
-    .dot{width:9px; height:9px; border-radius:99px; background:var(--warn)}
-    .dot.good{background:var(--good)}
-    .dot.bad{background:var(--bad)}
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
-    .small{font-size:12px}
-    .copyhint{color:var(--muted); font-size:12px; margin-top:8px}
-    .hr{height:1px; background:var(--line); margin:12px 0}
-    .checklist li{margin:6px 0; color:var(--muted)}
-    .ok{color:var(--good)}
-    .warn{color:var(--warn)}
-    .no{color:var(--bad)}
+    .smalldot{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background: var(--sun);
+    }
+    .smalldot.good{background: var(--good)}
+    .smalldot.bad{background: var(--bad)}
+
+    .mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .hr{height:1px; background: var(--line); margin: 12px 0}
+
+    .checklist{
+      padding-left: 18px;
+      margin: 8px 0 0;
+    }
+    .checklist li{margin: 8px 0; color: var(--muted)}
+    .ok{color: var(--good); font-weight: 800}
+    .warn{color: var(--warn); font-weight: 800}
+    .no{color: var(--bad); font-weight: 800}
+
+    .callout{
+      border: 1px solid rgba(52,211,153,.35);
+      background: rgba(52,211,153,.10);
+      padding: 10px 12px;
+      border-radius: 16px;
+      color: var(--text);
+      margin-top: 10px;
+    }
+
+    .tinyhelp{
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .friendlylist{ margin: 8px 0 0; padding-left: 18px; }
+    .friendlylist li{ margin: 8px 0; }
+
+    .spacer{height:6px}
   </style>
 </head>
 
 <body>
   <header>
     <div class="wrap">
-      <h1>Source Integration + MLA In-Text Citations Practice</h1>
-      <p>
-        Goal: write <strong>one research-style paragraph (8–10 sentences)</strong> using
-        <strong>1 direct quote</strong> + <strong>2 paraphrases</strong> with correct
-        <strong>MLA in-text citations</strong>, and a matching <strong>Works Cited</strong>.
-      </p>
-      <p class="small">
-        Non-negotiable rule: <strong>If you learned it from a source, you must cite it</strong> — even if you paraphrase.
-      </p>
+      <div class="topbar">
+        <h1>MLA In-Text Citations Practice</h1>
+        <p>
+          You will write <strong>one paragraph</strong> using:
+          <strong>1 quote</strong> + <strong>2 paraphrases</strong> + <strong>MLA citations</strong>.
+        </p>
+
+        <div class="tagline" aria-label="Quick goals">
+          <span class="chip"><span class="dot blue"></span>8–10 sentences</span>
+          <span class="chip"><span class="dot mint"></span>1 direct quote</span>
+          <span class="chip"><span class="dot purple"></span>2 paraphrases (2 sources)</span>
+          <span class="chip"><span class="dot pink"></span>Works Cited</span>
+        </div>
+
+        <div class="callout">
+          <strong>Rule:</strong> If you learned it from a source, you must cite it (even if you paraphrase).
+        </div>
+      </div>
     </div>
   </header>
 
   <main class="wrap">
     <div class="grid">
 
-      <!-- Assignment + Sources -->
-      <section class="card span2">
-        <h2>Directions</h2>
-        <p>
-          Write one paragraph (8–10 sentences) explaining what these sources show about:
-          <br><span class="k">1</span> the postsecondary instructor role and work conditions,
-          <span class="k">2</span> certification expectations, and
-          <span class="k">3</span> what employers are asking for right now.
-        </p>
-
-        <div class="pillrow">
-          <div class="pill">1 direct quote (with quotation marks)</div>
-          <div class="pill">2 paraphrases from 2 different sources</div>
-          <div class="pill">At least 3 in-text citations total</div>
-          <div class="pill">Works Cited (all sources used)</div>
+      <!-- Directions + Sources -->
+      <section class="card span2" aria-label="Directions and sources">
+        <div class="bigstep">
+          <div class="stepnum">A</div>
+          <div>
+            <h2>What you are doing</h2>
+            <p class="subtle">
+              Read the sources. Then write one paragraph explaining what they show about:
+            </p>
+            <ol class="subtle">
+              <li><strong>What the job is like</strong> (role + working conditions)</li>
+              <li><strong>Credentials</strong> (certification expectations)</li>
+              <li><strong>What employers want</strong> right now (from job posts)</li>
+            </ol>
+          </div>
         </div>
 
         <div class="hr"></div>
 
-        <h2>Your Sources (open in new tabs)</h2>
-        <p class="subtle">
-          Citation tip: for web sources, MLA in-text citations usually use the organization name (no page #).
-          Use either author/organization or title — just be consistent and match Works Cited.
-        </p>
+        <div class="bigstep">
+          <div class="stepnum">B</div>
+          <div>
+            <h2>Open your sources</h2>
+            <p class="subtle">
+              Open each link in a new tab. When you use information from a source, add an MLA in-text citation.
+            </p>
 
-        <ol class="subtle">
-          <li>
-            <strong>BLS (Occupational Outlook Handbook)</strong>:
-            <a target="_blank" rel="noopener" href="https://www.bls.gov/ooh/education-training-and-library/postsecondary-teachers.htm">
-              Postsecondary Teachers — OOH
-            </a>
-          </li>
-          <li>
-            <strong>CareerOneStop (Certification)</strong>:
-            <a target="_blank" rel="noopener" href="https://www.careeronestop.org/Toolkit/Training/find-certifications.aspx?certid=13771-A&direct=0&keyword=Mathematical+Science+Teachers%2C+Postsecondary">
-              Certified Postsecondary Instructor® (CPI®)
-            </a>
-          </li>
-          <li>
-            <strong>CareerOneStop (Job Listing: WSU, Pullman-area)</strong>:
-            <a target="_blank" rel="noopener" href="https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?detailpage=true&fc=0&jvid=b07d0cedfdb04e8183fbb27319d086868003&keyword=General%2BInternal%2BMedicine%2BPhysicians&lang=en&location=Washington&radius=25">
-              Washington State University — Pullman-area posting (CareerOneStop Job Finder)
-            </a>
-          </li>
-        </ol>
+            <ol class="friendlylist">
+              <li>
+                <strong>Source 1 (BLS website)</strong>:
+                <a target="_blank" rel="noopener"
+                   href="https://www.bls.gov/ooh/education-training-and-library/postsecondary-teachers.htm">
+                  Postsecondary Teachers — Occupational Outlook Handbook
+                </a>
+              </li>
+              <li>
+                <strong>Source 2 (PDF you uploaded)</strong>:
+                <a target="_blank" rel="noopener" href="pdfs/jobfinderpostsecond.pdf">
+                  Job Finder Posting — Postsecondary (PDF)
+                </a>
+              </li>
+              <li>
+                <strong>Source 3 (PDF you uploaded)</strong>:
+                <a target="_blank" rel="noopener" href="pdfs/jobfinderfirstresponder.pdf">
+                  Job Finder Posting — First Responder (PDF)
+                </a>
+              </li>
+            </ol>
 
-        <details>
-          <summary>Model (Example EMT paragraph + rules)</summary>
-          <p class="subtle">
-            Use this as a structure model. Notice: quote marks for the quote, paraphrases are truly in the writer’s own words, and every borrowed idea has a citation.
-          </p>
-          <p>
-            Being an EMT or paramedic means dealing with emergencies and helping people right away. The Bureau of Labor Statistics says EMTs and paramedics “provide emergency medical care” and sometimes also transport patients to medical facilities (Bureau of Labor Statistics). It also explains that the job can be stressful and physically hard, and that workers may have to work nights, weekends, and holidays (Bureau of Labor Statistics). To get into this field, people usually need training after high school, and every state requires EMTs and paramedics to be licensed (Bureau of Labor Statistics). In Washington, the CareerOneStop license page says you need a Department of Health credential and you have to pass exams, plus do continuing education to keep your license active (CareerOneStop). A job posting for Cape Fox in Seattle also shows what employers want because it requires a current EMT-B certification and Basic Life Support (BLS) certification (Cape Fox Concentric Methods). The posting also says they want 1–2 years of experience responding to medical events, which makes it clear that experience matters too (Cape Fox Concentric Methods). Overall, these sources show that becoming an EMT is not just about wanting to help people, you need training, licensing, and the right certifications to qualify for jobs.
-          </p>
-        </details>
+            <details>
+              <summary>Easy MLA tip (for websites + PDFs)</summary>
+              <p class="subtle">
+                If there are no page numbers, that’s okay. For MLA in-text citations, you can usually use:
+              </p>
+              <ul class="subtle">
+                <li>Organization name: <span class="mono">(Bureau of Labor Statistics)</span></li>
+                <li>Or a short title in quotation marks: <span class="mono">(“Job Finder Posting — Postsecondary”)</span></li>
+                <li>Whatever you choose, match it in your Works Cited.</li>
+              </ul>
+            </details>
+          </div>
+        </div>
       </section>
 
-      <!-- Input: Quote + Paraphrases -->
-      <section class="card">
-        <h2>Step 1: Build your evidence</h2>
-        <p class="subtle">
-          Read the sources. Then paste 1 quote and write 2 paraphrases. Add a citation after each one.
-        </p>
+      <!-- Step 1 -->
+      <section class="card" aria-label="Step 1 Build evidence">
+        <div class="bigstep">
+          <div class="stepnum">1</div>
+          <div>
+            <h2>Step 1: Collect your evidence</h2>
+            <p class="subtle">
+              Do three things: (1) paste a quote, (2) write paraphrase #1, (3) write paraphrase #2.
+            </p>
+          </div>
+        </div>
 
-        <label for="quoteText">Direct quote (paste exact words + keep quotation marks)</label>
-        <textarea id="quoteText" placeholder='Example: “…”'></textarea>
+        <label for="quoteText">1) Direct quote (copy exact words)</label>
+        <textarea id="quoteText" placeholder='Paste a quote. Keep the quotation marks like: “…”'></textarea>
 
         <div class="row">
           <div>
-            <label for="quoteCite">In-text citation for quote</label>
+            <label for="quoteCite">In-text citation for your quote</label>
             <input id="quoteCite" placeholder='Example: (Bureau of Labor Statistics) or (“Postsecondary Teachers”)' />
           </div>
           <div>
-            <label for="quoteSource">Which source did your quote come from?</label>
+            <label for="quoteSource">Where did this quote come from?</label>
             <select id="quoteSource">
               <option value="BLS">Source 1 (BLS)</option>
-              <option value="COS-CPI">Source 2 (CareerOneStop CPI)</option>
-              <option value="COS-WSU">Source 3 (CareerOneStop WSU job posting)</option>
+              <option value="PDF-POSTSECOND">Source 2 (Postsecondary PDF)</option>
+              <option value="PDF-FIRSTRESP">Source 3 (First Responder PDF)</option>
             </select>
           </div>
         </div>
 
-        <label for="para1">Paraphrase 1 (your own words, not a reworded sentence)</label>
-        <textarea id="para1" placeholder="Write your paraphrase here."></textarea>
+        <div class="spacer"></div>
 
-        <label for="para1Cite">In-text citation for paraphrase 1</label>
-        <input id="para1Cite" placeholder="Example: (Bureau of Labor Statistics) / (CareerOneStop) / (“Internal Medicine Residency Program Core Faculty”)" />
+        <label for="para1">2) Paraphrase #1 (your own words)</label>
+        <textarea id="para1" placeholder="Write what you learned, in your own words."></textarea>
 
-        <label for="para2">Paraphrase 2 (from a different source than paraphrase 1)</label>
-        <textarea id="para2" placeholder="Write your paraphrase here."></textarea>
+        <label for="para1Cite">In-text citation for paraphrase #1</label>
+        <input id="para1Cite" placeholder='Example: (Bureau of Labor Statistics) or (“Job Finder Posting — Postsecondary”).' />
 
-        <label for="para2Cite">In-text citation for paraphrase 2</label>
-        <input id="para2Cite" placeholder="Example: (CareerOneStop) / (Washington State University) / (“Certified Postsecondary Instructor® (CPI®)”) etc." />
+        <div class="spacer"></div>
 
-        <div class="status">
-          <div class="badge"><span class="dot" id="sentDot"></span><span id="sentStatus">Sentence count: 0 (target 8–10)</span></div>
-          <div class="badge"><span class="dot" id="citeDot"></span><span id="citeStatus">Citations: 0/3 minimum</span></div>
+        <label for="para2">3) Paraphrase #2 (from a different source than #1)</label>
+        <textarea id="para2" placeholder="Write what you learned from a different source."></textarea>
+
+        <label for="para2Cite">In-text citation for paraphrase #2</label>
+        <input id="para2Cite" placeholder='Example: (“Job Finder Posting — First Responder”) or (Bureau of Labor Statistics).' />
+
+        <div class="status" aria-label="Live progress checks">
+          <div class="badge"><span class="smalldot" id="sentDot"></span><span id="sentStatus">Sentences: 0 (goal 8–10)</span></div>
+          <div class="badge"><span class="smalldot" id="citeDot"></span><span id="citeStatus">Citations: 0/3 minimum</span></div>
         </div>
 
         <div class="btnrow">
           <button id="buildBtn">Build my paragraph</button>
-          <button id="clearBtn" title="Clears only the output areas">Clear outputs</button>
+          <button id="clearBtn" class="secondary" title="Clears only the output areas">Clear outputs</button>
         </div>
 
-        <p class="copyhint">Tip: after you build, revise the paragraph so it sounds like you (and stays 8–10 sentences).</p>
+        <p class="tinyhelp">
+          Tip: the builder gives you a start. You still revise it so it sounds like you.
+        </p>
       </section>
 
-      <!-- Output: Paragraph -->
-      <section class="card">
-        <h2>Step 2: Your paragraph (copy + paste for submission)</h2>
-        <p class="subtle">
-          This will auto-assemble a paragraph using a clean template. You should still revise for flow and clarity.
-        </p>
+      <!-- Step 2 -->
+      <section class="card" aria-label="Step 2 Paragraph output">
+        <div class="bigstep">
+          <div class="stepnum">2</div>
+          <div>
+            <h2>Step 2: Your paragraph</h2>
+            <p class="subtle">Click the button to generate a draft. Then read it and revise it.</p>
+          </div>
+        </div>
 
-        <label for="finalPara">Your draft paragraph</label>
+        <label for="finalPara">Draft paragraph (copy + paste)</label>
         <textarea id="finalPara" class="mono" placeholder="Click “Build my paragraph” to generate a draft."></textarea>
 
         <div class="btnrow">
           <button id="copyParaBtn">Copy paragraph</button>
-          <button id="makeChecklistBtn">Check requirements</button>
+          <button id="makeChecklistBtn" class="secondary">Check requirements</button>
         </div>
 
         <div class="hr"></div>
 
-        <h2>Requirements checklist</h2>
+        <h2>Checklist</h2>
         <ul class="checklist" id="checklist">
           <li>1 direct quote with quotation marks <span id="chkQuote" class="warn">(not checked yet)</span></li>
           <li>2 paraphrases from 2 different sources <span id="chkParas" class="warn">(not checked yet)</span></li>
@@ -282,53 +433,57 @@
         </ul>
       </section>
 
-      <!-- Works Cited -->
-      <section class="card span2">
-        <h2>Step 3: Works Cited builder (copy + paste)</h2>
-        <p class="subtle">
-          Fill in what you used. Keep it consistent with your in-text citations.
-          (Tip: web sources often use the organization as the “author.”)
-        </p>
+      <!-- Step 3 -->
+      <section class="card span2" aria-label="Step 3 Works Cited">
+        <div class="bigstep">
+          <div class="stepnum">3</div>
+          <div>
+            <h2>Step 3: Works Cited builder</h2>
+            <p class="subtle">
+              Your Works Cited should match your citations. If you cite a source, include it here.
+            </p>
+          </div>
+        </div>
 
         <div class="row">
           <div>
-            <label>Access date (auto-filled; you can edit)</label>
+            <label for="accessDate">Access date (auto-filled)</label>
             <input id="accessDate" />
           </div>
           <div>
-            <label>Student name (optional — for your own tracking)</label>
+            <label for="studentName">Your name (optional)</label>
             <input id="studentName" placeholder="Name" />
           </div>
         </div>
 
         <details open>
-          <summary>Source 1: BLS OOH — Postsecondary Teachers</summary>
-          <label for="wc1">Works Cited entry (edit as needed)</label>
+          <summary>Source 1: BLS — Postsecondary Teachers (website)</summary>
+          <label for="wc1">Works Cited entry (you can edit)</label>
           <textarea id="wc1" class="mono"></textarea>
         </details>
 
         <details>
-          <summary>Source 2: CareerOneStop — CPI Certification</summary>
-          <label for="wc2">Works Cited entry (edit as needed)</label>
+          <summary>Source 2: Job Finder Posting — Postsecondary (PDF)</summary>
+          <label for="wc2">Works Cited entry (you can edit)</label>
           <textarea id="wc2" class="mono"></textarea>
         </details>
 
         <details>
-          <summary>Source 3: CareerOneStop — WSU Pullman-area posting</summary>
-          <label for="wc3">Works Cited entry (edit as needed)</label>
+          <summary>Source 3: Job Finder Posting — First Responder (PDF)</summary>
+          <label for="wc3">Works Cited entry (you can edit)</label>
           <textarea id="wc3" class="mono"></textarea>
         </details>
 
         <div class="btnrow">
-          <button id="buildWCBtn">Build Works Cited block</button>
-          <button id="copyWCBtn">Copy Works Cited</button>
+          <button id="buildWCBtn">Build Works Cited</button>
+          <button id="copyWCBtn" class="secondary">Copy Works Cited</button>
         </div>
 
         <label for="wcBlock">Works Cited (final block)</label>
-        <textarea id="wcBlock" class="mono" placeholder="Click “Build Works Cited block”"></textarea>
+        <textarea id="wcBlock" class="mono" placeholder="Click “Build Works Cited”"></textarea>
 
-        <p class="copyhint">
-          Submission tip: paste your paragraph, then paste Works Cited below it (or on the next page, depending on your course format).
+        <p class="tinyhelp">
+          Submission tip: paste your paragraph first, then Works Cited right after (or on the next page if your class does that).
         </p>
       </section>
 
@@ -336,18 +491,15 @@
   </main>
 
   <script>
-    // Utilities
     const $ = (id) => document.getElementById(id);
 
     function todayUS() {
-      // Uses the user's local device date (fine for student access date)
       const d = new Date();
       const months = ["Jan.","Feb.","Mar.","Apr.","May","June","July","Aug.","Sept.","Oct.","Nov.","Dec."];
       return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
     }
 
     function countSentences(text) {
-      // A simple sentence counter: split on ., !, ? followed by space/end
       const cleaned = (text || "").trim();
       if (!cleaned) return 0;
       const parts = cleaned
@@ -359,58 +511,14 @@
     }
 
     function countCitations(text) {
-      // Rough count: how many parenthetical citations appear
-      // e.g., (CareerOneStop) or (“Title”)
       const matches = (text || "").match(/\([^)]+\)/g);
       return matches ? matches.length : 0;
     }
 
-    function setBadge(dotEl, statusEl, ok) {
+    function setDot(dotEl, state) {
       dotEl.classList.remove("good","bad");
-      if (ok === "good") dotEl.classList.add("good");
-      if (ok === "bad") dotEl.classList.add("bad");
-      // otherwise warn (default)
-    }
-
-    function buildDraftParagraph() {
-      const quote = $("quoteText").value.trim();
-      const quoteCite = $("quoteCite").value.trim();
-      const p1 = $("para1").value.trim();
-      const p1Cite = $("para1Cite").value.trim();
-      const p2 = $("para2").value.trim();
-      const p2Cite = $("para2Cite").value.trim();
-
-      // Template: 8–10 sentences target; students should revise.
-      // We generate 8 sentences if all fields present; otherwise generate what we can.
-      const s = [];
-
-      s.push("Postsecondary instructors teach college-level students and often balance teaching with other professional responsibilities.");
-      if (quote && quoteCite) {
-        s.push(`One source describes the role directly: ${quote} ${quoteCite}.`);
-      } else if (quote) {
-        s.push(`One source describes the role directly: ${quote}`);
-      }
-
-      if (p1 && p1Cite) s.push(`${p1} ${p1Cite}.`);
-      else if (p1) s.push(`${p1}.`);
-
-      s.push("These details help show what the day-to-day work can look like, including expectations for performance, professionalism, and workload.");
-
-      if (p2 && p2Cite) s.push(`${p2} ${p2Cite}.`);
-      else if (p2) s.push(`${p2}.`);
-
-      s.push("Across the sources, certification and training requirements matter because they signal credibility and readiness for the job.");
-      s.push("Employer requirements also show what is most valued right now, such as specific qualifications, experience, and the ability to work in real settings.");
-      s.push("Overall, the sources suggest that becoming a postsecondary instructor involves more than subject knowledge; it also includes credentials and meeting current hiring expectations.");
-
-      // Clean double punctuation issues when student adds periods
-      const draft = s
-        .map(x => x.replace(/\s+\./g, ".").replace(/\.\./g, "."))
-        .join(" ");
-
-      $("finalPara").value = draft;
-
-      updateStatusBadges();
+      if (state === "good") dotEl.classList.add("good");
+      if (state === "bad") dotEl.classList.add("bad");
     }
 
     function updateStatusBadges() {
@@ -418,26 +526,58 @@
       const sentCount = countSentences(text);
       const citeCount = countCitations(text);
 
-      $("sentStatus").textContent = `Sentence count: ${sentCount} (target 8–10)`;
+      $("sentStatus").textContent = `Sentences: ${sentCount} (goal 8–10)`;
       $("citeStatus").textContent = `Citations: ${citeCount}/3 minimum`;
 
-      const sentDot = $("sentDot");
-      const citeDot = $("citeDot");
+      if (sentCount >= 8 && sentCount <= 10) setDot($("sentDot"), "good");
+      else if (sentCount === 0) setDot($("sentDot"), "warn");
+      else setDot($("sentDot"), "bad");
 
-      if (sentCount >= 8 && sentCount <= 10) setBadge(sentDot, $("sentStatus"), "good");
-      else if (sentCount === 0) setBadge(sentDot, $("sentStatus"), "warn");
-      else setBadge(sentDot, $("sentStatus"), "bad");
+      if (citeCount >= 3) setDot($("citeDot"), "good");
+      else if (citeCount === 0) setDot($("citeDot"), "warn");
+      else setDot($("citeDot"), "bad");
+    }
 
-      if (citeCount >= 3) setBadge(citeDot, $("citeStatus"), "good");
-      else if (citeCount === 0) setBadge(citeDot, $("citeStatus"), "warn");
-      else setBadge(citeDot, $("citeStatus"), "bad");
+    function buildDraftParagraph() {
+      const quote = $("quoteText").value.trim();
+      const quoteCite = $("quoteCite").value.trim();
+
+      const p1 = $("para1").value.trim();
+      const p1Cite = $("para1Cite").value.trim();
+
+      const p2 = $("para2").value.trim();
+      const p2Cite = $("para2Cite").value.trim();
+
+      const s = [];
+      s.push("Postsecondary instructors teach college-level students, and the sources help explain what that job looks like.");
+
+      if (quote && quoteCite) s.push(`One source explains the role clearly: ${quote} ${quoteCite}.`);
+      else if (quote) s.push(`One source explains the role clearly: ${quote}.`);
+
+      if (p1 && p1Cite) s.push(`${p1} ${p1Cite}.`);
+      else if (p1) s.push(`${p1}.`);
+
+      s.push("This matters because it shows what instructors are expected to do and what their workdays can involve.");
+
+      if (p2 && p2Cite) s.push(`${p2} ${p2Cite}.`);
+      else if (p2) s.push(`${p2}.`);
+
+      s.push("The sources also show that credentials can be important, because they tell employers you are trained and ready.");
+      s.push("Job postings are helpful because they show what employers are asking for right now, like specific experience or qualifications.");
+      s.push("Overall, the sources suggest that being a postsecondary instructor is more than knowing a subject; it also includes meeting professional and hiring expectations.");
+
+      const draft = s
+        .map(x => x.replace(/\s+\./g, ".").replace(/\.\./g, "."))
+        .join(" ");
+
+      $("finalPara").value = draft;
+      updateStatusBadges();
     }
 
     function copyToClipboard(value) {
       navigator.clipboard.writeText(value).then(() => {
         alert("Copied!");
       }).catch(() => {
-        // fallback
         const tmp = document.createElement("textarea");
         tmp.value = value;
         document.body.appendChild(tmp);
@@ -451,36 +591,24 @@
     function buildWorksCitedDefaults() {
       const access = $("accessDate").value.trim() || todayUS();
 
-      // Minimal, editable MLA-ish web entries (students can refine if your course requires exact formatting)
       $("wc1").value =
         `Bureau of Labor Statistics. “Postsecondary Teachers.” Occupational Outlook Handbook, U.S. Bureau of Labor Statistics, https://www.bls.gov/ooh/education-training-and-library/postsecondary-teachers.htm. Accessed ${access}.`;
 
+      // For these PDFs, you may want to edit the title to match what the PDF actually is.
+      // The link is your GitHub Pages path (relative). That’s okay for class practice.
       $("wc2").value =
-        `CareerOneStop. “Certified Postsecondary Instructor® (CPI®).” Certification Finder, CareerOneStop, https://www.careeronestop.org/Toolkit/Training/find-certifications.aspx?certid=13771-A&direct=0&keyword=Mathematical+Science+Teachers%2C+Postsecondary. Accessed ${access}.`;
+        `“Job Finder Posting — Postsecondary.” PDF file, pdfs/jobfinderpostsecond.pdf. Accessed ${access}.`;
 
       $("wc3").value =
-        `CareerOneStop. “Internal Medicine Residency Program Core Faculty.” Job Finder, CareerOneStop, https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?detailpage=true&fc=0&jvid=b07d0cedfdb04e8183fbb27319d086868003&keyword=General%2BInternal%2BMedicine%2BPhysicians&lang=en&location=Washington&radius=25. Accessed ${access}.`;
+        `“Job Finder Posting — First Responder.” PDF file, pdfs/jobfinderfirstresponder.pdf. Accessed ${access}.`;
     }
 
     function buildWorksCitedBlock() {
-      const used = new Set();
-
-      // Decide what sources were used based on which fields are filled and which source quote was selected
-      const quoteSource = $("quoteSource").value;
-      const quote = $("quoteText").value.trim();
-      const p1 = $("para1").value.trim();
-      const p2 = $("para2").value.trim();
-
-      if (quote) used.add(quoteSource);
-      if (p1) used.add("PARA1"); // we'll ask user to ensure it's different in checklist
-      if (p2) used.add("PARA2");
-
-      // Always include all three by default? Your assignment says WC for all sources used.
-      // We'll include any entry that the student leaves non-empty OR if they used a field.
-      const entries = [];
-      if ($("wc1").value.trim()) entries.push($("wc1").value.trim());
-      if ($("wc2").value.trim()) entries.push($("wc2").value.trim());
-      if ($("wc3").value.trim()) entries.push($("wc3").value.trim());
+      const entries = [
+        $("wc1").value.trim(),
+        $("wc2").value.trim(),
+        $("wc3").value.trim()
+      ].filter(Boolean);
 
       $("wcBlock").value = entries.join("\n");
     }
@@ -514,20 +642,20 @@
       $("chkCites").textContent = hasCites ? "(ok)" : `(need at least 3; you have ${cites})`;
       $("chkCites").className = hasCites ? "ok" : "no";
 
-      $("chkSents").textContent = hasSentRange ? "(ok)" : `(target 8–10; you have ${sentCount})`;
+      $("chkSents").textContent = hasSentRange ? "(ok)" : `(goal 8–10; you have ${sentCount})`;
       $("chkSents").className = hasSentRange ? "ok" : "no";
 
       $("chkWC").textContent = hasWC ? "(ok)" : "(build + include Works Cited)";
       $("chkWC").className = hasWC ? "ok" : "no";
     }
 
-    // Wire up buttons
+    // Init
     $("accessDate").value = todayUS();
     buildWorksCitedDefaults();
 
+    // Buttons
     $("buildBtn").addEventListener("click", () => {
       buildDraftParagraph();
-      // Keep WC current
       buildWorksCitedDefaults();
       buildWorksCitedBlock();
     });
